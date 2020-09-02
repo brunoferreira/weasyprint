@@ -72,9 +72,12 @@ def multiple():
     return response
 
 @app.route('/py', methods=['GET'])
-def generate():
+def generate2():
     name = request.args.get('filename')
-    exec(open('../usr/share/weasysrc/python/'+name).read())
+    #exec(open('../usr/share/weasysrc/python/'+name).read())
+    f = open('a.txt', 'w')
+    f.write('yes')
+    f.close()
     #print ( request.get_data() )
     return 'ok'
 
