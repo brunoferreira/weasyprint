@@ -73,12 +73,12 @@ def multiple():
 
 @app.route('/py', methods=['GET'])
 def generate2():
-    name = request.args.get('filename')
-    f = open('b.txt', 'w')
-    f.write(name)
-    f.close()
-    exec(open('../usr/share/weasysrc/python/mm.py').read())
-    #print ( request.get_data() )
+    filename = request.args.get('filename')
+    try:
+        exec(open('../usr/share/weasysrc/python/'+filename).read())
+    except:
+        message = 'O arquivo ' + filename + ' nao existe ou ha um erro em sua execucao'
+        return message
     return 'ok'
 
 if __name__ == '__main__':
