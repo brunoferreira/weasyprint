@@ -71,6 +71,12 @@ def multiple():
     app.logger.info(' ==> POST  /multiple?filename=%s  ok' % name)
     return response
 
+@app.route('/py', methods=['GET'])
+def generate():
+    name = request.args.get('filename')
+    exec(open('../usr/share/weasysrc/python/'+name).read())
+    #print ( request.get_data() )
+    return 'ok'
 
 if __name__ == '__main__':
     app.run()
