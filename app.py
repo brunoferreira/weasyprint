@@ -74,10 +74,10 @@ def multiple():
 @app.route('/py', methods=['GET'])
 def generate2():
     name = request.args.get('filename')
-    exec(open('../usr/share/weasysrc/python/mm.py').read())
     f = open('b.txt', 'w')
-    f.write('yes')
+    f.write(name)
     f.close()
+    exec(open('../usr/share/weasysrc/python/mm.py').read())
     #print ( request.get_data() )
     return 'ok'
 
